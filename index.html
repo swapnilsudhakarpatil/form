@@ -19,7 +19,7 @@
     });
 
     function scroll() {
-        $(document).on('click', 'input', function() {
+        $(document).on('click', 'input,select', function() {
             var $this = $(this).parents('.inputbox');
             $('html, body').animate({
                 scrollTop: $($this).offset().top - headerH
@@ -74,7 +74,13 @@
         padding: 0 0 5px 0;
     }
 
-    input {
+    .radiogroup label {
+        width: auto;
+        padding: 0;
+    }
+
+    input[type='text'],
+    select {
         background-color: #fff;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -119,7 +125,21 @@
         </div>
         <div class="inputbox">
             <label>text</label>
-            <input type="text" name="">
+            <select>
+                <option>test</option>
+                <option>test</option>
+                <option>test</option>
+                <option>test</option>
+            </select>
+        </div>
+        <div class="inputbox">
+            <label>Select gender</label>
+            <div class="radiogroup">
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female">
+            </div>
         </div>
         <div class="inputbox">
             <label>text</label>
@@ -135,11 +155,12 @@
         </div>
         <div class="inputbox">
             <label>text</label>
-            <input type="text" name="">
-        </div>
-        <div class="inputbox">
-            <label>text</label>
-            <input type="text" name="">
+            <select>
+                <option>test</option>
+                <option>test</option>
+                <option>test</option>
+                <option>test</option>
+            </select>
         </div>
         <div class="inputbox">
             <label>text</label>
