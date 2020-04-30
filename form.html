@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="keywords">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+    var winHeight = $(window).height();
+    var headerH;
+    $(document).ready(function() {
+        headerH = $('header').outerHeight(true);
+        $('.js_pdtop').css({ 'margin-top': headerH });
+        scroll();
+    });
+
+    function scroll() {
+        $(document).on('click', 'input', function() {
+            var $this = $(this).parents('.inputbox');
+            $('html, body').animate({
+                scrollTop: $($this).offset().top - headerH
+            }, 600);
+        })
+    }
+    </script>
+    <style type="text/css">
+    html,
+    body {
+        margin: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #f44336;
+        padding: 10px 15px;
+        width: 100%;
+        color: #fff;
+        z-index: 1;
+    }
+
+    h1,
+    h2 {
+        margin: 5px 0;
+    }
+
+    .formwrap {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 750px;
+        padding: 15px 15px 10px;
+    }
+
+    .inputbox {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    label {
+        font-size: 14px;
+        line-height: 1.5;
+        padding-right: 10px;
+        width: 100%;
+        display: inline-block;
+        padding: 0 0 5px 0;
+    }
+
+    input {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .error_message {
+        color: #eda11e;
+        font-size: 12px;
+        line-height: 1.5;
+        position: absolute;
+        display: none;
+        margin-top: .2rem
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>lorem ipsum</h1>
+    </header>
+    <div class="formwrap js_pdtop">
+        <div class="intro">
+            <h2> lorem ipsum lorem ipsum lorem ipsum</h2>
+            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+        </div>
+        <div class="inputbox">
+            <div class="feilds">
+                <label>text</label>
+                <input type="text" name=" Text">
+            </div>
+            <span class="error_message">This field is required.</span>
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+        <div class="inputbox">
+            <label>text</label>
+            <input type="text" name="">
+        </div>
+    </div>
+</body>
+
+</html>
