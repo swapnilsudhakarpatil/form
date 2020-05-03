@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="mobile">
 
 <head>
     <title>form</title>
@@ -9,22 +9,47 @@
     <meta name="keywords" content="keywords">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script type="text/javascript" src="bootstrap-select.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-select.min.css">
     <script type="text/javascript">
     var winHeight = $(window).height();
     var headerH;
+
     $(document).ready(function() {
         headerH = $('header').outerHeight(true);
-        $('.js_pdtop').css({ 'margin-top': headerH });
-        scroll();
+        $('.js_toppadding').css({ 'margin-top': headerH });
+        if ($('html').hasClass('mobile')) {
+            if ($('.js_scrollform').length) {
+                formscroll();
+            }
+        }
     });
 
-    function scroll() {
-        $(document).on('click', 'input,select', function() {
+    function formscroll() {
+        $('.js_scrollform').on('shown.bs.modal', function() {
+            $('.modal .inputbox').each(function() {
+                $(this).attr('offset', $(this).offset().top)
+            });
+        });
+
+        $(document).on('click', 'input[type="text"]', function() {
             var $this = $(this).parents('.inputbox');
-            $('html, body').animate({
-                scrollTop: $($this).offset().top - headerH
-            }, 600);
-        })
+            var $offset;
+            if ($(this).parents().hasClass('modal')) {
+                $offset = $($this).attr('offset');
+                $('.modal-open .modal').animate({
+                    scrollTop: $offset
+                }, 600);
+            }else{
+                $offset = $($this).offset().top - headerH;
+                $('html,body').animate({
+                    scrollTop: $offset
+                }, 600);
+
+            }
+        });
     }
     </script>
     <style type="text/css">
@@ -58,6 +83,7 @@
         width: 100%;
         max-width: 750px;
         padding: 15px 15px 10px;
+        position: relative;
     }
 
     .inputbox {
@@ -103,10 +129,10 @@
     <header>
         <h1>lorem ipsum</h1>
     </header>
-    <div class="formwrap js_pdtop">
+    <div class="formwrap js_toppadding js_scrollform">
         <div class="intro">
             <h2> lorem ipsum lorem ipsum lorem ipsum</h2>
-            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum <a href="#" data-toggle="modal" data-target="#form">Popup</a></p>
         </div>
         <div class="inputbox">
             <div class="feilds">
@@ -165,6 +191,82 @@
         <div class="inputbox">
             <label>text</label>
             <input type="text" name="">
+        </div>
+    </div>
+    <div id="form" class="modal js_scrollform">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Form</h4>
+                    <button type="button" data-dismiss="modal" class="close">X</button>
+                </div>
+                <div class="modal-body">
+                    <div class="formwrap">
+                        <div class="intro">
+                            <h2> lorem ipsum lorem ipsum lorem ipsum</h2>
+                            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                        </div>
+                        <div class="inputbox">
+                            <div class="feilds">
+                                <label>text</label>
+                                <input type="text" name=" Text">
+                            </div>
+                            <span class="error_message">This field is required.</span>
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <input type="text" name="">
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <input type="text" name="">
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <select>
+                                <option>test</option>
+                                <option>test</option>
+                                <option>test</option>
+                                <option>test</option>
+                            </select>
+                        </div>
+                        <div class="inputbox">
+                            <label>Select gender</label>
+                            <div class="radiogroup">
+                                <label for="male">Male</label>
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="female">Female</label>
+                                <input type="radio" id="female" name="gender" value="female">
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <input type="text" name="">
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <input type="text" name="">
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <input type="text" name="">
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <select>
+                                <option>test</option>
+                                <option>test</option>
+                                <option>test</option>
+                                <option>test</option>
+                            </select>
+                        </div>
+                        <div class="inputbox">
+                            <label>text</label>
+                            <input type="text" name="">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
