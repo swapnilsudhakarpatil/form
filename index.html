@@ -34,7 +34,7 @@
             });
         });
 
-        $(document).on('click', 'input[type="text"]', function() {
+        $(document).on('focus', 'input[type="text"]', function() {
             var $this = $(this).parents('.inputbox');
             var $offset;
             if ($(this).parents().hasClass('modal')) {
