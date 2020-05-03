@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="mobile">
+<html lang="en">
 
 <head>
     <title>form</title>
@@ -9,12 +9,14 @@
     <meta name="keywords" content="keywords">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="modernizr.min.js"></script>
+    <script type="text/javascript" src="detectizr.min.js"></script>
     <script type="text/javascript" src="bootstrap.js"></script>
     <script type="text/javascript" src="bootstrap-select.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="bootstrap-select.min.css">
     <script type="text/javascript">
-    var winHeight = $(window).height();
+    Detectizr.detect({detectScreen:false});
     var headerH;
 
     $(document).ready(function() {
